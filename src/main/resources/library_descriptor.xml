@@ -27,5 +27,21 @@
       <definition>org.apache.asterix.external.library.SumFactory
       </definition>
     </libraryFunction>
+    <libraryFunction>
+      <function_type>SCALAR</function_type>
+      <name>getSentiment</name>
+      <arguments>Tweet</arguments>
+      <return_type>AnnotatedTweet</return_type>
+      <definition>org.apache.asterix.external.library.SentimentFactory
+      </definition>
+    </libraryFunction>
+    <libraryFunction>
+      <function_type>SCALAR</function_type>
+      <name>wiki</name>
+      <arguments>ASTRING</arguments>
+      <return_type>ASTRING</return_type>
+      <definition>org.apache.asterix.external.library.EncryptFactory
+      </definition>
+    </libraryFunction>
   </libraryFunctions>
 </externalLibrary>

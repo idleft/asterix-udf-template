@@ -35,8 +35,6 @@
       <outputDirectory/>
       <includes>
         <include>*.xml</include>
-        <include>change_feed.csv</include>
-        <include>openbeerdb/beer.csv</include>
       </includes>
     </fileSet>
   </fileSets>
