@@ -2,7 +2,8 @@
 This is a minimum User Defined Function (UDF) template for AsterixDB. 
 
 ### Prerequisites
-* Successfully build and install (via `mvn install`) AsterixDB locally. (See [AsterixDB Dependecies](#asterixDB-dependencies) 
+* Successfully build and install (via `mvn install`) AsterixDB locally.
+ (See [AsterixDB Dependecies](#asterixdb-dependencies)
 for details)
 
 ### How To Use
@@ -21,7 +22,8 @@ The dependency to AsterixDB is specified in pom.xml as follow:
 </dependency>
 ```
 There are two ways to enable Maven to pick up AsterixDB depencies: 
-  * Local Maven directory (Recommended): In this case, we will need to build AsterixDB locally and use `mvn install` to add all 
+  * Local Maven directory (Recommended): In this case, we will need to build AsterixDB locally
+  and use `mvn install` to add all
   AsterixDB library into the local maven directory so it can be used by other projects.
   * Remote Maven Repo (Not Recommended): You can also try to add AsterixDB dependencies from remote Maven repo. Since 
   remote repo is not always up-to-date, it is recommended to use the local maven repo. If you want to use remote one,
