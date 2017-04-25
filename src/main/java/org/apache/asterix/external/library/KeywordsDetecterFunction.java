@@ -36,7 +36,7 @@ public class KeywordsDetecterFunction implements IExternalScalarFunction {
     @Override
     public void evaluate(IFunctionHelper functionHelper) throws Exception {
         JObjects.JString inputName = (JObjects.JString) functionHelper.getArgument(0);
-        result.setValue(String.valueOf(keywordsList.contains(inputName)));
+        result.setValue(String.valueOf(keywordsList.contains(inputName.getValue())));
         functionHelper.setResult(result);
     }
 
@@ -44,6 +44,7 @@ public class KeywordsDetecterFunction implements IExternalScalarFunction {
     public void initialize(IFunctionHelper functionHelper) throws Exception {
         InputStream in = this.getClass().getClassLoader().getResourceAsStream("KeywordsDetector.txt");
         keywordsList = IOUtils.readLines(in, StandardCharsets.UTF_8);
+
         result = (JObjects.JString)functionHelper.getResultObject();
     }
 
