@@ -22,7 +22,7 @@
     <libraryFunction>
       <function_type>SCALAR</function_type>
       <name>mysum</name>
-      <arguments>AINT32,AINT32</arguments>
+      <argument_type>AINT32,AINT32</argument_type>
       <return_type>AINT32</return_type>
       <definition>org.apache.asterix.external.library.SumFactory
       </definition>
@@ -30,7 +30,7 @@
     <libraryFunction>
       <function_type>SCALAR</function_type>
       <name>getSentiment</name>
-      <arguments>Tweet</arguments>
+      <argument_type>Tweet</argument_type>
       <return_type>AnnotatedTweet</return_type>
       <definition>org.apache.asterix.external.library.SentimentFactory
       </definition>
@@ -38,7 +38,7 @@
     <libraryFunction>
       <function_type>SCALAR</function_type>
       <name>encrypt</name>
-      <arguments>ASTRING</arguments>
+      <argument_type>ASTRING</argument_type>
       <return_type>ASTRING</return_type>
       <definition>org.apache.asterix.external.library.EncryptFactory
       </definition>
@@ -46,7 +46,7 @@
     <libraryFunction>
       <function_type>SCALAR</function_type>
       <name>mydetector</name>
-      <arguments>ASTRING</arguments>
+      <argument_type>ASTRING</argument_type>
       <return_type>ASTRING</return_type>
       <definition>org.apache.asterix.external.library.KeywordsDetecterFactory
       </definition>

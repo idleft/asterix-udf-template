@@ -21,7 +21,7 @@ package org.apache.asterix.external.library;
 
 import org.apache.asterix.external.api.IExternalScalarFunction;
 import org.apache.asterix.external.api.IFunctionHelper;
-import org.apache.asterix.external.library.java.JObjects;
+import org.apache.asterix.external.library.java.base.JString;
 import org.apache.commons.io.IOUtils;
 
 import java.io.InputStream;
@@ -31,11 +31,11 @@ import java.util.List;
 public class KeywordsDetecterFunction implements IExternalScalarFunction {
 
     private List<String> keywordsList;
-    JObjects.JString result;
+    JString result;
 
     @Override
     public void evaluate(IFunctionHelper functionHelper) throws Exception {
-        JObjects.JString inputName = (JObjects.JString) functionHelper.getArgument(0);
+        JString inputName = (JString) functionHelper.getArgument(0);
         result.setValue(String.valueOf(keywordsList.contains(inputName.getValue())));
         functionHelper.setResult(result);
     }
@@ -45,7 +45,7 @@ public class KeywordsDetecterFunction implements IExternalScalarFunction {
         InputStream in = this.getClass().getClassLoader().getResourceAsStream("KeywordsDetector.txt");
         keywordsList = IOUtils.readLines(in, StandardCharsets.UTF_8);
 
-        result = (JObjects.JString)functionHelper.getResultObject();
+        result = (JString)functionHelper.getResultObject();
     }
 
     @Override

@@ -21,11 +21,11 @@ package org.apache.asterix.external.library;
 import com.github.davidcarboni.cryptolite.Crypto;
 import org.apache.asterix.external.api.IExternalScalarFunction;
 import org.apache.asterix.external.api.IFunctionHelper;
-import org.apache.asterix.external.library.java.JObjects;
+import org.apache.asterix.external.library.java.base.JString;
 
 public class EncryptFunction implements IExternalScalarFunction {
 
-    private JObjects.JString result;
+    private JString result;
     private Crypto crypto = new Crypto();
 
     @Override
@@ -35,8 +35,8 @@ public class EncryptFunction implements IExternalScalarFunction {
 
     @Override
     public void evaluate(IFunctionHelper functionHelper) throws Exception {
-        String plaintext = ((JObjects.JString) functionHelper.getArgument(0)).getValue();
-        String password = ((JObjects.JString) functionHelper.getArgument(1)).getValue();
+        String plaintext = ((JString) functionHelper.getArgument(0)).getValue();
+        String password = ((JString) functionHelper.getArgument(1)).getValue();
         String ciphertext = crypto.encrypt(plaintext, password).replace("\n", "").replace("\r", "");
         result.setValue(ciphertext);
         functionHelper.setResult(result);
@@ -44,7 +44,7 @@ public class EncryptFunction implements IExternalScalarFunction {
 
     @Override
     public void initialize(IFunctionHelper functionHelper) {
-        result = (JObjects.JString) functionHelper.getResultObject();
+        result = (JString) functionHelper.getResultObject();
         crypto = new Crypto();
     }
 

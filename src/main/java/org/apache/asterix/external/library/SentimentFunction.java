@@ -20,12 +20,13 @@ package org.apache.asterix.external.library;
 
 import org.apache.asterix.external.api.IExternalScalarFunction;
 import org.apache.asterix.external.api.IFunctionHelper;
-import org.apache.asterix.external.library.java.JObjects;
 import org.apache.asterix.external.library.java.JTypeTag;
+import org.apache.asterix.external.library.java.base.JRecord;
+import org.apache.asterix.external.library.java.base.JString;
 
 public class SentimentFunction implements IExternalScalarFunction {
 
-    private JObjects.JString jString;
+    private JString jString;
 
     @Override
     public void deinitialize() {
@@ -35,12 +36,12 @@ public class SentimentFunction implements IExternalScalarFunction {
     @Override
     public void evaluate(IFunctionHelper functionHelper) throws Exception {
         // Read input record
-        JObjects.JRecord inputRecord = (JObjects.JRecord) functionHelper.getArgument(0);
-        JObjects.JString id = (JObjects.JString) inputRecord.getValueByName("id");
-        JObjects.JString text = (JObjects.JString) inputRecord.getValueByName("text");
+        JRecord inputRecord = (JRecord) functionHelper.getArgument(0);
+        JString id = (JString) inputRecord.getValueByName("id");
+        JString text = (JString) inputRecord.getValueByName("text");
 
         // Populate result record
-        JObjects.JRecord result = (JObjects.JRecord) functionHelper.getResultObject();
+        JRecord result = (JRecord) functionHelper.getResultObject();
         result.setField("id", id);
         result.setField("text", text);
 
@@ -55,7 +56,7 @@ public class SentimentFunction implements IExternalScalarFunction {
 
     @Override
     public void initialize(IFunctionHelper functionHelper) throws Exception{
-        jString = (JObjects.JString) functionHelper.getObject(JTypeTag.STRING);
+        jString = (JString) functionHelper.getObject(JTypeTag.STRING);
     }
 
 }

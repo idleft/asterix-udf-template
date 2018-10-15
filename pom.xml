@@ -4,7 +4,7 @@
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
     <properties>
-        <asterixdb-verson>0.9.1-SNAPSHOT</asterixdb-verson>
+        <asterixdb-version>0.9.4-SNAPSHOT</asterixdb-version>
         <maven.compiler.source>1.8</maven.compiler.source>
         <maven.compiler.target>1.8</maven.compiler.target>
     </properties>
@@ -17,7 +17,7 @@
         <dependency>
             <groupId>org.apache.asterix</groupId>
             <artifactId>asterix-external-data</artifactId>
-            <version>${asterixdb-verson}</version>
+            <version>${asterixdb-version}</version>
             <scope>provided</scope>
         </dependency>
         <dependency>
