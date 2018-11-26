@@ -22,10 +22,10 @@ package org.apache.asterix.external.library;
 import org.apache.asterix.external.api.IExternalScalarFunction;
 import org.apache.asterix.external.api.IFunctionFactory;
 
-public class KeywordsDetecterFactory implements IFunctionFactory{
+public class WordInListFactory implements IFunctionFactory {
 
     @Override
     public IExternalScalarFunction getExternalFunction() {
-        return new KeywordsDetecterFunction();
+        return new WordInListFunction();
     }
 }
