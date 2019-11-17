@@ -38,4 +38,13 @@
       </includes>
     </fileSet>
   </fileSets>
+  <dependencySets>
+    <dependencySet>
+      <includes>
+        <include>com.github.davidcarboni:cryptolite</include>
+      </includes>
+      <unpack>false</unpack>
+      <outputDirectory>lib</outputDirectory>
+    </dependencySet>
+  </dependencySets>
 </assembly>

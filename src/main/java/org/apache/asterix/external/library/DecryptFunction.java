@@ -18,16 +18,15 @@
  */
 package org.apache.asterix.external.library;
 
+import com.github.davidcarboni.cryptolite.Crypto;
 import org.apache.asterix.external.api.IExternalScalarFunction;
 import org.apache.asterix.external.api.IFunctionHelper;
-import org.apache.asterix.external.library.java.JTypeTag;
-import org.apache.asterix.external.library.java.base.JLong;
-import org.apache.asterix.external.library.java.base.JRecord;
 import org.apache.asterix.external.library.java.base.JString;
 
-public class SentimentFunction implements IExternalScalarFunction {
+public class DecryptFunction implements IExternalScalarFunction {
 
-    private JString jString;
+    private JString result;
+    private Crypto crypto = new Crypto();
 
     @Override
     public void deinitialize() {
@@ -36,28 +35,17 @@ public class SentimentFunction implements IExternalScalarFunction {
 
     @Override
     public void evaluate(IFunctionHelper functionHelper) throws Exception {
-        // Read input record
-        JRecord inputRecord = (JRecord) functionHelper.getArgument(0);
-        JLong id = (JLong) inputRecord.getValueByName("id");
-        JString text = (JString) inputRecord.getValueByName("text");
-
-        // Populate result record
-        JRecord result = (JRecord) functionHelper.getResultObject();
-        result.setField("id", id);
-        result.setField("text", text);
-
-        if (text.getValue().length() > 66) {
-            jString.setValue("Amazing!");
-        } else {
-            jString.setValue("Boring!");
-        }
-        result.setField("Sentiment", jString);
+        String plaintext = ((JString) functionHelper.getArgument(0)).getValue();
+        String password = ((JString) functionHelper.getArgument(1)).getValue();
+        String deciphertext = crypto.decrypt(plaintext, password).replace("\n", "").replace("\r", "");
+        result.setValue(deciphertext);
         functionHelper.setResult(result);
     }
 
     @Override
-    public void initialize(IFunctionHelper functionHelper) throws Exception{
-        jString = new JString("");
+    public void initialize(IFunctionHelper functionHelper) {
+        result = (JString) functionHelper.getResultObject();
+        crypto = new Crypto();
     }
 
 }

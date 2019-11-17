@@ -64,9 +64,17 @@
     <libraryFunction>
       <function_type>SCALAR</function_type>
       <name>encrypt</name>
-      <argument_type>ASTRING</argument_type>
+      <argument_type>ASTRING, ASTRING</argument_type>
       <return_type>ASTRING</return_type>
       <definition>org.apache.asterix.external.library.EncryptFactory
+      </definition>
+    </libraryFunction>
+    <libraryFunction>
+      <function_type>SCALAR</function_type>
+      <name>decrypt</name>
+      <argument_type>ASTRING, ASTRING</argument_type>
+      <return_type>ASTRING</return_type>
+      <definition>org.apache.asterix.external.library.DecryptFactory
       </definition>
     </libraryFunction>
   </libraryFunctions>
